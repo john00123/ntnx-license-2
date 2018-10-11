@@ -1,0 +1,311 @@
+//Comment for compiler
+@import '../../_ntnx/variables';
+@import '../../_ntnx/mixins';
+
+html { @include font }
+
+body {
+  margin-top: 60px;
+  background-color: $background-color-3;
+}
+
+//fonts
+
+h1 { font: $h1 }
+h3 { font: $h3 }
+h4 { font: $h4 }
+p  { font: $p  }
+a  { @include link }
+h1 { line-height: 1.2 }
+
+//primitives
+
+.primary       { @include primary }
+.secondary-alt { @include secondary-alt }
+.secondary     { @include secondary }
+
+// color and size
+
+.fw   { width: 100% }
+
+.red  { color:$red-1 }
+.blue { color:$dark-blue-3 }
+[data-type='alt']{ color:$font-color-3 }
+
+
+header, aside, footer{
+  position: fixed;
+  background-color: white;
+}
+
+//full page popup header
+
+header {
+  @include size(60px, 100%);
+  @include flex(center,space-between, row);
+  border-bottom: 1px solid $border-color-3;
+  color: $font-color-1;
+  font-weight: 600;
+  padding: 0 20px;
+  top:     0;
+  left:    0;
+
+
+  //close button (X)
+
+  .close {
+    @include size(10px, 10px);
+    position: relative;
+    border: none;
+    background: none;
+
+    &:after,
+    &:before {
+      content: '';
+      @include size(14px, 2px);
+      background-color: $grey-2;
+      display: block;
+      border-radius: 2px;
+      position: absolute;
+      top: 0;
+    }
+
+    &:before { transform: rotate(45deg)  }
+    &:after  { transform: rotate(-45deg) }
+  }
+}
+
+
+// sidebar
+
+aside {
+  * { margin-bottom: 10px}
+  @include    size(100%, 280px );
+  min-height: calc(100vh - 60px);
+  padding: 30px 20px;
+  font-weight: 500;
+
+  // number
+
+  .step span {
+    @include size(20px, 20px);
+    font-size: 12px;
+    display: inline-block;
+    line-height: 18px;
+    margin-right: 10px;
+    text-align: center;
+    border-radius: 4pc;
+    border: 1px solid $border-color-2;
+  }
+
+  .active-step {
+    background-color: $blue-1;
+    color: $white;
+    border: 1px solid $blue-1!important;
+  }
+
+}
+
+
+//container
+
+container {
+  @include size(100%, calc (100% -280px));
+  @include grid(300px, 1fr, 20px);
+  margin-left: 280px;
+  padding: 20px;
+}
+
+.container-horizontal {
+  @include grid(100%, 1fr, 20px);
+}
+
+
+//card
+
+.card, .cost-box{
+  border-radius: 4px;
+  position: relative;
+}
+
+.deck{
+  @include flex(flex-start, stretch, column);
+  height: 100%;
+  position: relative;
+}
+
+.card {
+  flex-grow: 1;
+  @include flex(space-between, stretch, column);
+  background-color: white;
+  padding: 30px 30px 80px 30px;
+  &:hover { @include shadow }
+}
+
+
+//cost box
+
+.c-cost, .s-cost{
+  @include flex(center, flex-start, row);
+  &:before{
+    content: '';
+    @include size(6px, 6px);
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 4pc;
+  }
+  &:after{
+    color: $font-color-3;
+    margin-left: 10px;
+  }
+}
+
+
+.c-cost::before { background-color: #F25C61 }
+.c-cost::after {content: 'Core Licenses';}
+
+.s-cost::before { background-color: #8A77ED }
+.s-cost::after {content: 'Storage Licenses';}
+
+
+.cost-box{
+  margin-top: 10px;
+  padding: 15px 20px;
+}
+
+
+//cost box color variation
+
+.cost-gray{ background-color: $background-color-3 }
+
+.cost-blue{
+  color: $blue-1;
+  background-color: $light-blue-3;
+  .c-cost::after, .s-cost::after{color: $blue-3 }
+}
+
+.cost-red{
+  color: $red-1;
+  background-color: #FFF7F7!important;
+  span { color: $red-3 }
+}
+
+
+// button for card footer
+
+.footer-btn{
+  position: absolute;
+  bottom: 0;
+  margin: 0 -30px ;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-top: 1px solid $border-color-3;
+  border-radius: 0 0 4px 4px;
+  color: $blue-1;
+}
+
+
+//popover
+
+.popover{
+  @include size( auto, 300px);
+  h3{
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  position: absolute;
+  bottom: -25%;
+  left: 75%;
+  padding: 20px;
+  z-index: 100;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 0   0 1px rgba(0, 0, 0, 0.05),
+              0 9px 9px 0 rgba(0, 0, 0, 0.02),
+							0 3px 3px 0 rgba(0, 0, 0, 0.02),
+							0 1px 1px 0 rgba(0, 0, 0, 0.02);
+
+
+  &::before{
+    position: absolute;
+    display: block;
+    content: '';
+    @include size(8px, 8px);
+    top: calc(50%);
+    left: -3px;
+    border-radius: 1px;
+    transform: rotate(45deg);
+    background-color: white;
+    z-index: 1000;
+    box-shadow: -1px 1px 0px 0px rgba(0, 0, 0, 0.05);
+
+  }
+  div,input{margin-bottom: 20px;}
+
+}
+
+.popover-right{
+  left: -45%;
+  &::before{
+    left: calc(100% - 5px);
+    box-shadow: 1px -1px 0px 0px rgba(0, 0, 0, 0.05);
+  }
+}
+
+
+@include inputStyle;
+
+//dropdown styling
+
+select{
+  -webkit-appearance: none;
+  padding: 0 11px;
+  line-height: 1;
+  position: relative;
+  margin-top: 8px;
+}
+
+.selectdiv{
+  position: relative;
+  &:after{
+    content: '';
+    position: absolute;
+    top:36px;
+    right: 10px;
+    @include size(8px, 4px);
+    background: url('../img/select.svg');
+    background-size: contain;
+  }
+}
+
+.input-grid{
+  @include grid(auto, 120px, 20px);
+  grid-row-gap: 0;
+  margin-top: 3px;
+  input{
+    margin-bottom: 0;
+    margin-top:8px;
+  }
+}
+
+//footer
+
+footer{
+  @include size(60px, 100%);
+  @include flex(center, space-between, row);
+  background: white;
+  bottom:0;
+  border-top: 1px solid $background-color-3;
+  padding: 0 20px;
+}
+
+
+// first step page
+
+.image-container{
+  @include size(calc(100vh - 100px), 400px);
+  @include flex(center, center, column);
+  img{ @include size(200px, auto) }
+  margin: auto;
+}
