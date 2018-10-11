@@ -23,7 +23,3 @@ function listItem(data){
 //initial setup
 $('aside').append(steps.map(steps => listItem(steps)));
 $('.pos1 span').addClass('active-step');
-$('.start').click(function() {
-  $('.pos2 span').addClass('active-step');
-  $('.pos1 span').removeClass('active-step');
-});
