@@ -50,21 +50,21 @@ const acropolisPopover =`
     <h3 class='fw'> Select License </h3>
     <div class='selectdiv'>
       <label> License Tier</label>
-      <select>
-        <option value="" disabled selected>Select your option</option>
-        <option> Starter</option>
-        <option> Pro </option>
-        <option> Ultimate </option>
+      <select id='license-tier'>
+        <option value='0' disabled selected>Select your option</option>
+        <option value='1'> Starter</option>
+        <option value='2'> Pro </option>
+        <option value='3'> Ultimate </option>
       </select>
     </div>
     <div class='input-grid'>
       <fieldset>
         <label for = 'core-input'> Core</label>
-        <input id='core-input' type='number'></input>
+        <input id='core-input' type='number' value='500' disabled></input>
       </fieldset>
       <fieldset>
         <label for = 'core-input'> Storage</label>
-        <input id='core-input' type='number'></input>
+        <input id='core-input' type='number' value='500' disabled></input>
       </fieldset>
     </div>
     <button class='primary fw pop-save'> Save </div>
@@ -133,15 +133,31 @@ $('.start').click(function() {
   $('container').html(name.map(name => cardStructure(name.name, name.status, name.description, name.storageCost, name.storageTotal, name.coreCost, name.coreTotal)));
 
   $('.footer-btn').click(function(){
-  $(this).parent().append(acropolisPopover);
-  ($(this).offset().left > 300) ?$('.popover').addClass('popover-right') : null;
-  $('.pop-save').click(()=> {
-    alert('Changes saved')
-    $('.popover').remove();
-    $(this).parent().find('.cost-box').addClass('cost-blue');
-    $(this).parent().find('.c-cost').html('500 of 500');
-    $(this).parent().find('.s-cost').html('500 of 500');
-  });
+    $(this).parent().append(acropolisPopover);
+    $('.pop-save').addClass('btn-disabled')
+    $('#license-tier').change(function(){
+      const value = $(this).val();
+      if(value == 3){
+        $('#core-input').addClass('input-error');
+        $('.input-grid').append(`<span class='red iii'> Not enought licenses. Select different tier.</span>`);
+        $('.pop-save').addClass('btn-disabled')
+      }
+      else{
+        $('#core-input').removeClass('input-error');
+        $('.iii').remove();
+        $('.pop-save').removeClass('btn-disabled');
+      }
+    });
+
+    ($(this).offset().left > 300) ?$('.popover').addClass('popover-right') : null;
+
+    $('.pop-save').click(()=> {
+      alert('Changes saved')
+      $('.popover').remove();
+      $(this).parent().find('.cost-box').addClass('cost-blue');
+      $(this).parent().find('.c-cost').html('500 of 500');
+      $(this).parent().find('.s-cost').html('500 of 500');
+    });
   });
 });
 
@@ -149,7 +165,6 @@ $('.start').click(function() {
   $('.pos2 span').addClass('active-step');
   $('.pos1 span').removeClass('active-step');
 });
-
 
 $(document).mouseup(function (e) {
   const popover = $(".popover");
@@ -159,4 +174,4 @@ $(document).mouseup(function (e) {
 
 
 
-// $('.start').click();
+$('.start').click();

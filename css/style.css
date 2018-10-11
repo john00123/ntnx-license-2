@@ -311,12 +311,12 @@ container {
 }
 
 .cost-blue {
-  color: #22A5F7;
+  color: #1f88de;
   background-color: #e9f6fe;
 }
 
 .cost-blue .c-cost::after, .cost-blue .s-cost::after {
-  color: #91d2fb;
+  color: #59bcf9;
 }
 
 .cost-red {
@@ -487,6 +487,7 @@ select {
   line-height: 1;
   position: relative;
   margin-top: 8px;
+  user-select: none;
 }
 
 .selectdiv {
@@ -530,6 +531,23 @@ footer {
   bottom: 0;
   border-top: 1px solid #F2F4F6;
   padding: 0 20px;
+}
+
+.input-error {
+  border-color: #F55656 !important;
+  color: #F55656 !important;
+}
+
+.iii {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.btn-disabled {
+  pointer-events: none;
+  opacity: 0.3;
 }
 
 .image-container {

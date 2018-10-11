@@ -179,9 +179,9 @@ container {
 .cost-gray{ background-color: $background-color-3 }
 
 .cost-blue{
-  color: $blue-1;
+  color: $dark-blue-3;
   background-color: $light-blue-3;
-  .c-cost::after, .s-cost::after{color: $blue-3 }
+  .c-cost::after, .s-cost::after{color: $blue-2 }
 }
 
 .cost-red{
@@ -264,6 +264,7 @@ select{
   line-height: 1;
   position: relative;
   margin-top: 8px;
+  user-select: none;
 }
 
 .selectdiv{
@@ -300,6 +301,24 @@ footer{
   padding: 0 20px;
 }
 
+
+// input input-error
+.input-error{
+  border-color: $red-1!important;
+  color: $red-1!important;
+}
+
+.iii{
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.btn-disabled{
+  pointer-events: none;
+  opacity: 0.3;
+}
 
 // first step page
 
