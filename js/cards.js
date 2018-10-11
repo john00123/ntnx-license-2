@@ -145,6 +145,11 @@ $('.start').click(function() {
   });
 });
 
+$('.start').click(function() {
+  $('.pos2 span').addClass('active-step');
+  $('.pos1 span').removeClass('active-step');
+});
+
 
 $(document).mouseup(function (e) {
   const popover = $(".popover");
