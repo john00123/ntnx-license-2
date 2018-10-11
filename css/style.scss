@@ -304,8 +304,13 @@ footer{
 // first step page
 
 .image-container{
-  @include size(calc(100vh - 100px), 400px);
+  @include size(calc(100vh - 100px), 500px);
   @include flex(center, center, column);
-  img{ @include size(200px, auto) }
+  p{text-align: center;
+    margin-bottom: 20px;
+  }
+  img{ @include size(120px, auto)
+    margin-bottom: 40px;
+  }
   margin: auto;
 }

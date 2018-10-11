@@ -36,8 +36,8 @@ let name = [
 const firstPage =`
   <div class='image-container'>
     <img src='../img/license.svg'/>
-    <h3> Summary File </h3> </br>
-    <p> This data has information needed to license you Prism Central or Cluster</p>
+    <h3> Upload Summary File </h3> </br>
+    <p> This file has information needed to license your Prism Central or Cluster</p>
     </br>
     <div>
       <button class='primary start' style='margin-right:10px'> Upload File</button>
@@ -126,8 +126,10 @@ function cardStructure(name, status, description, storageCost, storageTotal, cor
 //first page
 
 $('container').append(firstPage);
+$('footer').toggle();
 
 $('.start').click(function() {
+  $('footer').toggle();
   $('container').html(name.map(name => cardStructure(name.name, name.status, name.description, name.storageCost, name.storageTotal, name.coreCost, name.coreTotal)));
 
   $('.footer-btn').click(function(){
@@ -152,4 +154,4 @@ $(document).mouseup(function (e) {
 
 
 
-$('.start').click();
+// $('.start').click();

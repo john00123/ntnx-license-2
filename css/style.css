@@ -534,7 +534,7 @@ footer {
 
 .image-container {
   height: calc(100vh - 100px);
-  width: 400px;
+  width: 500px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -543,8 +543,14 @@ footer {
   margin: auto;
 }
 
+.image-container p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .image-container img {
-  height: 200px;
+  height: 120px;
   width: auto;
   box-sizing: border-box;
+  margin-bottom: 40px;
 }
