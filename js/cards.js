@@ -174,4 +174,4 @@ $(document).mouseup(function (e) {
 
 
 
-$('.start').click();
+// $('.start').click();
