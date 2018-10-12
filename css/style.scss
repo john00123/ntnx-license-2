@@ -3,9 +3,9 @@
 @import '../../_ntnx/mixins';
 
 html { @include font }
-
+button{user-select: none;}
 body {
-  margin-top: 60px;
+  margin: 60px 0;
   background-color: $background-color-3;
 }
 
@@ -49,7 +49,7 @@ header {
   padding: 0 20px;
   top:     0;
   left:    0;
-
+  z-index: 20;
 
   //close button (X)
 
@@ -179,7 +179,7 @@ container {
 .cost-gray{ background-color: $background-color-3 }
 
 .cost-blue{
-  color: $dark-blue-3;
+  color: $dark-blue-1;
   background-color: $light-blue-3;
   .c-cost::after, .s-cost::after{color: $blue-2 }
 }
