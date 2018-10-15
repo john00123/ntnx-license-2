@@ -64,10 +64,10 @@ const acropolisPopover =`
 
 const necropolisPopover =`
   <div class='popover'>
-    <h3 class='fw'> Select Storage </h3>
+    <h3 class='fw'> Select TiB to license </h3>
 
-      <label>TiB of Licensed storage</label>
-      <input id='files-tib' type='number'/>
+      <label >TiB of Licensed storage</label>
+      <input style='margin-top:10px' id='files-tib' type='number'/>
 
     <button class='primary pop-save fw files'> Save </button>
   </div>
