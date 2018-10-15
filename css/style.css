@@ -371,7 +371,7 @@ container {
   width: 250px;
   box-sizing: border-box;
   position: absolute;
-  bottom: -25%;
+  bottom: -15%;
   left: 75%;
   padding: 20px;
   z-index: 100;

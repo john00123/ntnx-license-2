@@ -47,7 +47,7 @@ const firstPage =`
 
 const acropolisPopover =`
   <div class='popover'>
-    <h3 class='fw'> Select License </h3>
+    <h3 class='fw'> Select License Tier </h3>
     <div class='selectdiv'>
       <label> License Tier</label>
       <select id='license-tier'>
@@ -64,11 +64,20 @@ const acropolisPopover =`
 
 const necropolisPopover =`
   <div class='popover'>
-    <h3 class='fw'> Select TiB to license </h3>
+    <h3 class='fw'> Select TiB </h3>
 
       <label >TiB of Licensed storage</label>
       <input style='margin-top:10px' id='files-tib' type='number'/>
 
+    <button class='primary pop-save fw files'> Save </button>
+  </div>
+`
+
+const trecropolisPopover =`
+  <div class='popover'>
+    <h3 class='fw'> Select Products</h3>
+      <p> <input type='checkbox' checked> Acropolis</p>
+      <p> <input type='checkbox' checked> File-server</p>
     <button class='primary pop-save fw files'> Save </button>
   </div>
 `
@@ -168,7 +177,9 @@ function licensePage(){
 
     //checks on type of button pressed for acropolis
     if (element.is('#SoftwareEncryption')){
-      parent.append(necropolisPopover)
+      parent.append(trecropolisPopover)
+      checks();
+
     }
 
     //element intelligent positioning ((needs heavy refinement))
@@ -209,7 +220,20 @@ function licensePage(){
 
 }
 
+function checks(){
 
+  $(':checkbox').click(function(event){
+    if(this.checked) {
+          // Iterate each checkbox
+          $(':checkbox').each(function() {
+              this.checked = true;
+          });
+      } else {
+          $(':checkbox').each(function() {
+              this.checked = false;
+          });
+      }})
+}
 
 //acropolis first time license tier function
 function licenseTier(){

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="212px" height="212px" viewBox="0 0 212 212" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon - Sort by</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8.70710678,1.29289322 L11.7071068,4.29289322 C12.0976311,4.68341751 12.0976311,5.31658249 11.7071068,5.70710678 C11.3165825,6.09763107 10.6834175,6.09763107 10.2928932,5.70710678 L9,4.41421356 L9,10 C9,10.5522847 8.55228475,11 8,11 C7.44771525,11 7,10.5522847 7,10 L7,2 C7,1.44771525 7.44771525,1 8,1 C8.27614237,1 8.52614237,1.11192881 8.70710678,1.29289322 Z M3.29289322,10.7071068 L0.292893219,7.70710678 C-0.0976310729,7.31658249 -0.0976310729,6.68341751 0.292893219,6.29289322 C0.683417511,5.90236893 1.31658249,5.90236893 1.70710678,6.29289322 L3,7.58578644 L3,2 C3,1.44771525 3.44771525,1 4,1 C4.55228475,1 5,1.44771525 5,2 L5,10 C5,10.5522847 4.55228475,11 4,11 C3.72385763,11 3.47385763,10.8880712 3.29289322,10.7071068 Z" id="path-1"></path>
+    </defs>
+    <g id="✂️-Iconography" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Standard" transform="translate(-660.000000, -338.000000)">
+            <rect fill="#F2F4F6" x="0" y="0" width="960" height="1040"></rect>
+            <g id="Controls" transform="translate(60.000000, 316.000000)">
+                <g id="Icons" transform="translate(40.000000, 70.000000)">
+                    <g id="Standard-/-Sort-by" transform="translate(660.000000, 52.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask"></g>
+                        <g id="Icon-/-Dark-Bg-/-Secondary" mask="url(#mask-2)" fill="#7C8D9F" fill-rule="evenodd">
+                            <g id="Color-/-Grey-2">
+                                <polygon id="Color" points="0 0 12 0 12 12 0 12"></polygon>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
