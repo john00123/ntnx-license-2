@@ -1,5 +1,5 @@
 //svg
 $('footer').append(`
-  <button class='secondary'> Back</button>
-  <button class='primary'> Next</button>
+  <button class='secondary back'> Back</button>
+  <button class='primary next'> Next</button>
 `);

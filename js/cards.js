@@ -37,7 +37,7 @@ const firstPage =`
   <div class='image-container'>
     <img src='../img/license.svg'/>
     <h3> Upload Summary File </h3> </br>
-    <p> This file has information needed to license your Prism Central or Cluster</p>
+    <p> This is the file you downloaded from Prism Central or Prism Element. This file has information needed to license your cluster on various Nutanix products.</p>
     </br>
     <div>
       <button class='primary start' style='margin-right:10px'> Upload File</button>
@@ -57,20 +57,21 @@ const acropolisPopover =`
         <option value='3'> Ultimate </option>
       </select>
     </div>
-    <div class='input-grid'>
-      <fieldset>
-        <label for = 'core-input'> Core</label>
-        <input id='core-input' type='number' value='500' disabled></input>
-      </fieldset>
-      <fieldset>
-        <label for = 'core-input'> Storage</label>
-        <input id='core-input' type='number' value='500' disabled></input>
-      </fieldset>
-    </div>
-    <button class='primary fw pop-save'> Save </div>
+
+    <button class='primary pop-save fw'> Save </button>
   </div>
 `
 
+const necropolisPopover =`
+  <div class='popover'>
+    <h3 class='fw'> Select Storage </h3>
+
+      <label>TiB of Licensed storage</label>
+      <input id='files-tib' type='number'/>
+
+    <button class='primary pop-save fw files'> Save </button>
+  </div>
+`
 
 
 function box(name, storageCost, storageTotal, coreCost, coreTotal){
@@ -78,7 +79,7 @@ function box(name, storageCost, storageTotal, coreCost, coreTotal){
     case 'Software Encryption':
     return(`
       <div class='cost-box cost-gray'>
-        <p class='s-cost'> ${storageCost} of ${storageTotal}</p>
+        <p class='s-cost'> Requires ${storageTotal}</p>
       </div>`);
     break;
     case 'Files':
@@ -90,8 +91,8 @@ function box(name, storageCost, storageTotal, coreCost, coreTotal){
     case 'Acropolis':
     return(`
       <div class='cost-box cost-gray'>
-        <p class='c-cost'> ${coreCost} of ${coreTotal}</p>
-        <p class='s-cost'> ${storageCost} of ${storageTotal}</p>
+        <p class='c-cost'> Requires ${coreTotal}</p>
+        <p class='s-cost'> Requires ${storageTotal}</p>
       </div>`);
     break;
     default:
@@ -101,75 +102,180 @@ function box(name, storageCost, storageTotal, coreCost, coreTotal){
 
 
 function cardStructure(name, status, description, storageCost, storageTotal, coreCost, coreTotal) {
+  const names = name.replace(/\s+/g, '');
   return (
-
     ` <div class='deck'>
-        <div class='card'>
+        <div class='card c${names}'>
           <h1 class='title'  > ${name}   </h1></br>
           <h3 data-type='alt'> ${status} </h3></br>
-          <p> ${description}</p>
+          <p class='description'> ${description}</p>
           ${box(name, storageCost, storageTotal, coreCost, coreTotal)}
 
-          <button id='${name}' class='secondary footer-btn'>
+          <button id='${names}' class='secondary footer-btn'>
             ${ (status == 'Unlicensed')
             ? `Select License`
             : (status == 'Licensed')
             ? `Modify Licenses`
             : `Add more Licenses`}
           </button></div>
-
       </div>
   `)
 }
 
 
 //first page
+$('container').html(firstPage)
+$('footer').toggle()
 
-$('container').append(firstPage);
-$('footer').toggle();
 
-$('.start').click(function() {
+//back to first firstPage
+function reset(){
+  $('container').html(firstPage)
+  $('footer').toggle()
+}
+
+//clicks on upload file
+function licensePage(){
+
   $('footer').toggle();
   $('container').html(name.map(name => cardStructure(name.name, name.status, name.description, name.storageCost, name.storageTotal, name.coreCost, name.coreTotal)));
 
+  //add-on ⭐️
+
+  $('.cSoftwareEncryption h1').addClass('addon-title');
+  // $('.cSoftwareEncryption').find('.cost-box:eq(0)').before(`<label style='margin-bottom:0px; margin-top:10px;'>  Acropolis</label>`);
+
+
+  //click on license action button
   $('.footer-btn').click(function(){
-    $(this).parent().append(acropolisPopover);
-    $('.pop-save').addClass('btn-disabled')
-    $('#license-tier').change(function(){
-      const value = $(this).val();
-      if(value == 3){
-        $('#core-input').addClass('input-error');
-        $('.input-grid').append(`<span class='red iii'> Not enought licenses. Select different tier.</span>`);
-        $('.pop-save').addClass('btn-disabled')
-      }
-      else{
-        $('#core-input').removeClass('input-error');
-        $('.iii').remove();
-        $('.pop-save').removeClass('btn-disabled');
-      }
-    });
+    const popover = $('.popover')
+    const parent = $(this).parent()
+    const element = $(this)
 
-    ($(this).offset().left > 300) ?$('.popover').addClass('popover-right') : null;
+    //remove ability to trigger event again
+    element.addClass('disabled')
 
+    //checks on type of button pressed for acropolis
+    if (element.is('#Acropolis')){
+      parent.append(acropolisPopover)
+      licenseTier()
+    }
+
+    //checks on type of button pressed for acropolis
+    if (element.is('#Files')){
+      parent.append(necropolisPopover)
+    }
+
+    //checks on type of button pressed for acropolis
+    if (element.is('#SoftwareEncryption')){
+      parent.append(necropolisPopover)
+    }
+
+    //element intelligent positioning ((needs heavy refinement))
+    (element.offset().left > 300) ?
+      $('.popover').addClass('popover-right') :
+      null
+
+    //on save event
     $('.pop-save').click(()=> {
-      alert('Changes saved')
-      $('.popover').remove();
-      $(this).parent().find('.cost-box').addClass('cost-blue');
-      $(this).parent().find('.c-cost').html('500 of 500');
-      $(this).parent().find('.s-cost').html('500 of 500');
-    });
-  });
-});
+      const popover = $('.popover')
+      const parent = $(this).parent()
+      const button = $('.footer-btn')
+      const place = parent.find('.footer-btn')
 
-$('.start').click(function() {
-  $('.pos2 span').addClass('active-step');
-  $('.pos1 span').removeClass('active-step');
-});
+      button.removeClass('disabled')
+      popover.remove()
+      parent.find('.cost-box').addClass('cost-blue')
+
+      if(place.is('#Acropolis')){
+        parent.find('.cost-box').html(`<p>Will be fully licensed on Acrolis Pro</p>`)
+        parent.find('.c-cost, .s-scost').remove()
+      }
+
+      if(place.is('#Files')){
+        parent.find('.s-cost').html('500 TiB')
+        parent.parent().next().find('.s-cost').after(`
+          <p class='c-cost cost-addon'>Requires File Servers</p>`)
+      }
+
+      if(place.is('#SoftwareEncryption')){
+        parent.find('.cost-box').html(`<p>Will be fully licensed on Acrolis Pro</p>`)
+        parent.find('.c-cost, .s-scost').remove()
+      }
+    });
+
+  });
+
+
+}
+
+
+
+//acropolis first time license tier function
+function licenseTier(){
+
+  $('.pop-save').addClass('btn-disabled');
+  $('#license-tier').change(function(){
+    const value = $(this).val();
+
+    if(value == 3){
+      $('#core-input').addClass('input-error');
+      $('.input-grid').append(`<span class='red iii'> Not enought licenses. Select different tier.</span>`);
+      $('.pop-save').addClass('btn-disabled')
+    }
+    else{
+      $('#core-input').removeClass('input-error');
+      $('.iii').remove();
+      $('.pop-save').removeClass('btn-disabled');
+    }
+  })
+}
+
+
+// change steps
+
+let item = 1;
+
+  $('.start, .next').click(function() {
+    $(`.pos${item + 1} span`).addClass('active-step');
+    $(`.pos${item} span`).removeClass('active-step');
+    if(item < 4){item += 1};
+    if(item == 2){
+      licensePage()
+    }
+  });
+
+  $('.back').click(function() {
+    $(`.pos${item - 1} span`).addClass('active-step');
+    $(`.pos${item} span`).removeClass('active-step');
+    item -= 1;
+
+    //weird reloading action nesting....
+
+    if(item == 1){
+      reset()
+      $('.start').off('click');
+      $('.start').on('click', function(){
+        $(`.pos${item + 1} span`).addClass('active-step');
+        $(`.pos${item} span`).removeClass('active-step');
+        licensePage()
+        item +=1;
+      });
+    }
+  });
+
+
+//close popover
 
 $(document).mouseup(function (e) {
-  const popover = $(".popover");
-  if (!popover.is(e.target) && popover.has(e.target).length === 0)
-  { popover.remove(); }
+  const popover = $('.popover');
+  const button = $('.footer-btn');
+  if(!popover.is(e.target) && popover.has(e.target).length === 0){
+      popover.remove()
+    if(button.hasClass('disabled')){
+       button.removeClass('disabled');
+    }
+  }
 });
 
 

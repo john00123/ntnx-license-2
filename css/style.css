@@ -225,7 +225,7 @@ aside .active-step {
 
 container {
   height: 100%;
-  width: calc 100% -280px;
+  width: calc(100% - 280px);
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -261,11 +261,16 @@ container {
   justify-content: stretch;
   flex-direction: column;
   background-color: white;
-  padding: 30px 30px 80px 30px;
+  padding: 30px 30px 90px 30px;
 }
 
 .card:hover {
   box-shadow: 0 9px 9px 0 rgba(0, 0, 0, 0.02), 0 3px 3px 0 rgba(0, 0, 0, 0.02), 0 1px 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+.description {
+  display: block;
+  min-height: 85px;
 }
 
 .c-cost, .s-cost {
@@ -281,13 +286,13 @@ container {
   width: 6px;
   box-sizing: border-box;
   display: inline-block;
-  margin-right: 10px;
   border-radius: 4pc;
+  margin-right: 10px;
 }
 
 .c-cost:after, .s-cost:after {
   color: #7C8D9F;
-  margin-left: 10px;
+  margin-left: 6px;
 }
 
 .c-cost::before {
@@ -307,8 +312,12 @@ container {
 }
 
 .cost-box {
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 15px 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .cost-gray {
@@ -325,12 +334,20 @@ container {
 }
 
 .cost-red {
-  color: #F55656;
+  color: #f88080;
   background-color: #FFF7F7 !important;
 }
 
 .cost-red span {
-  color: #faabab;
+  color: #dd4d57;
+}
+
+.cost-red .c-cost::after, .cost-red .s-cost::after {
+  color: #f88080;
+}
+
+.cost-addon::after {
+  content: "Files add-on licenses" !important;
 }
 
 .footer-btn {
@@ -345,9 +362,13 @@ container {
   color: #22A5F7;
 }
 
+.disabled {
+  pointer-events: none;
+}
+
 .popover {
   height: auto;
-  width: 300px;
+  width: 250px;
   box-sizing: border-box;
   position: absolute;
   bottom: -25%;
@@ -515,7 +536,6 @@ select {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(auto, 120px));
   grid-gap: 20px;
-  grid-row-gap: 0;
   margin-top: 3px;
 }
 
