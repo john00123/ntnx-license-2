@@ -149,6 +149,22 @@ container {
   min-height: 88px;
 }
 
+//add-on addon-title
+.addon-title{
+  @include flex(center, flex-start, row);
+  &::after{
+    content:'ADD-ON';
+    display: inline-block;
+    font-size: 10px;
+    border: 1px solid $blue-1;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: $blue-1;
+    font-weight: 500;
+    margin-left: 20px;
+    flex-shrink: 0;
+  }
+}
 
 //cost box
 
