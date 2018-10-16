@@ -1,8 +1,7 @@
-
 let name = [
   {
     name: 'Acropolis',
-    status: 'Unlicensed',
+    status: 'Product License',
     description: `Nutanix Acropolis combines compute, storage, networking, virtualization, and much needed data protection and security capabilities into a hyperconverged solution that powers your enterprise cloud.`,
     type: 'capacity',
     storageCost: 0,
@@ -21,9 +20,9 @@ let name = [
     coreTotal: 500
   },
   {
-    name: 'Software Encryption',
+    name: 'Data Encryption',
     status: 'Unlicensed',
-    description: `Nutanix's License Add-on "Software encryption" protects your data with data-at-rest encryption.`,
+    description: `Nutanix's License Add-on "Data encryption" protects your data with data-at-rest encryption.`,
     type: 'capacity',
     storageCost: 0,
     coreCost: 0,
@@ -32,8 +31,18 @@ let name = [
   }
 ]
 
+const reviewPage = `
+  <h1> Review and Download </h1>
+  <div class='table-container'
+    <table>
+      <tr>
+        <td>HI</td>
+      <tr>
+    </table>
+  </div>
+`
 
-const firstPage =`
+const firstPage = `
   <div class='image-container'>
     <img src='../img/license.svg'/>
     <h3> Upload Summary File </h3> </br>
@@ -43,7 +52,8 @@ const firstPage =`
       <button class='primary start' style='margin-right:10px'> Upload File</button>
       <button class='secondary-alt'> Dark Sites </button>
     </div>
-  </div>`
+  </div>
+`
 
 const acropolisPopover =`
   <div class='popover'>
@@ -64,8 +74,17 @@ const acropolisPopover =`
 
 const necropolisPopover =`
   <div class='popover'>
-    <h3 class='fw'> Select TiB </h3>
 
+    <h3 class='fw'> Select TiB </h3>
+    <div class='selectdiv'>
+      <label> License Tier</label>
+      <select id='license-tier' disabled>
+        <option value='0' disabled selected>Select your option</option>
+        <option value='1'> Starter (100 available)</option>
+        <option value='2'> Pro (200 available) </option>
+        <option value='3' disabled selected> Ultimate (0 available) </option>
+      </select>
+    </div>
       <label >TiB of Licensed storage</label>
       <input style='margin-top:10px' id='files-tib' type='number'/>
 
@@ -82,10 +101,9 @@ const trecropolisPopover =`
   </div>
 `
 
-
 function box(name, storageCost, storageTotal, coreCost, coreTotal){
   switch(name){
-    case 'Software Encryption':
+    case 'Data Encryption':
     return(`
       <div class='cost-box cost-gray'>
         <p class='s-cost'> Requires ${storageTotal}</p>
@@ -109,8 +127,9 @@ function box(name, storageCost, storageTotal, coreCost, coreTotal){
   }
 }
 
-
-function cardStructure(name, status, description, storageCost, storageTotal, coreCost, coreTotal) {
+function cardStructure(
+  name, status, description,
+  storageCost, storageTotal, coreCost, coreTotal){
   const names = name.replace(/\s+/g, '');
   return (
     ` <div class='deck'>
@@ -131,11 +150,9 @@ function cardStructure(name, status, description, storageCost, storageTotal, cor
   `)
 }
 
-
 //first page
 $('container').html(firstPage)
 $('footer').toggle()
-
 
 //back to first firstPage
 function reset(){
@@ -146,14 +163,11 @@ function reset(){
 //clicks on upload file
 function licensePage(){
 
-  $('footer').toggle();
-  $('container').html(name.map(name => cardStructure(name.name, name.status, name.description, name.storageCost, name.storageTotal, name.coreCost, name.coreTotal)));
+  $('footer').toggle()
+  $('container').html(name.map(name => cardStructure(name.name, name.status, name.description, name.storageCost, name.storageTotal, name.coreCost, name.coreTotal)))
 
   //add-on ⭐️
-
-  $('.cSoftwareEncryption h1').addClass('addon-title');
-  // $('.cSoftwareEncryption').find('.cost-box:eq(0)').before(`<label style='margin-bottom:0px; margin-top:10px;'>  Acropolis</label>`);
-
+  $('.cDataEncryption h1').addClass('addon-title');
 
   //click on license action button
   $('.footer-btn').click(function(){
@@ -176,7 +190,7 @@ function licensePage(){
     }
 
     //checks on type of button pressed for acropolis
-    if (element.is('#SoftwareEncryption')){
+    if (element.is('#DataEncryption')){
       parent.append(trecropolisPopover)
       checks();
 
@@ -209,30 +223,23 @@ function licensePage(){
           <p class='c-cost cost-addon'>Requires File Servers</p>`)
       }
 
-      if(place.is('#SoftwareEncryption')){
+      if(place.is('#DataEncryption')){
         parent.find('.cost-box').html(`<p>Will be fully licensed on Acrolis Pro</p>`)
         parent.find('.c-cost, .s-scost').remove()
       }
     });
-
   });
 
 
 }
 
 function checks(){
-
   $(':checkbox').click(function(event){
-    if(this.checked) {
-          // Iterate each checkbox
-          $(':checkbox').each(function() {
-              this.checked = true;
-          });
-      } else {
-          $(':checkbox').each(function() {
-              this.checked = false;
-          });
-      }})
+    if(this.checked){
+      $(':checkbox').each(function(){this.checked = true})}
+    else {
+      $(':checkbox').each(function(){this.checked = false})}
+  })
 }
 
 //acropolis first time license tier function
@@ -267,6 +274,11 @@ let item = 1;
     if(item == 2){
       licensePage()
     }
+
+    if(item == 3){
+      $('container').html(reviewPage);
+    }
+
   });
 
   $('.back').click(function() {
@@ -286,6 +298,12 @@ let item = 1;
         item +=1;
       });
     }
+    if(item == 2){
+      licensePage();
+      $('footer').toggle();
+    }
+
+
   });
 
 

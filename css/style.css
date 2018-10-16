@@ -293,6 +293,11 @@ container {
   flex-shrink: 0;
 }
 
+input:disabled, select:disabled {
+  background-color: #F2F4F6;
+  pointer-events: none;
+}
+
 .c-cost, .s-cost {
   display: flex;
   align-items: center;

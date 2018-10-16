@@ -166,8 +166,12 @@ container {
   }
 }
 
-//cost box
+input:disabled, select:disabled{
+  background-color: $background-color-3;
+  pointer-events: none;
+}
 
+//cost box
 .c-cost, .s-cost{
   @include flex(center, flex-start, row);
   &:before{
