@@ -186,6 +186,7 @@ input:disabled, select:disabled{
 //cost box
 .c-cost, .s-cost{
   @include flex(center, flex-start, row);
+
   &:before{
     content: '';
     @include size(6px, 6px);
@@ -213,7 +214,10 @@ input:disabled, select:disabled{
   @include flex(flex-start, center, column);
 }
 
-
+progress{
+ display: flex;
+ flex-grow: 1;
+}
 //cost box color variation
 
 .cost-gray{ background-color: $background-color-3 }

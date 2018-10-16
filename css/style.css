@@ -434,6 +434,11 @@ input:disabled, select:disabled {
   flex-direction: column;
 }
 
+progress {
+  display: flex;
+  flex-grow: 1;
+}
+
 .cost-gray {
   background-color: #F2F4F6;
 }

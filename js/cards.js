@@ -211,12 +211,14 @@ function licensePage(){
       if(place.is('#Acropolis')){
         const thirdCard = parent.parent().next().next()
         parent.find('.c-cost, .s-cost').html(full)
+        parent.find('h1').append('Pro')
         thirdCard.find('.c-cost, .s-cost').html(empty)
 
       }
 
       if(place.is('#Files')){
         parent.find('.s-cost').html('500 TiB')
+        parent.find('h1').append('Pro')
         parent.parent().next().find('.s-cost').after(`
           <p class='s-cost'>${empty}</p>`)
       }
