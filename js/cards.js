@@ -205,8 +205,7 @@ function licensePage(){
       button.removeClass('disabled')
       popover.remove()
       parent.find('.cost-box').addClass('cost-blue')
-      $('.cDataEncryption').css('opacity','1')
-      $('.cDataEncryption').css('pointer-events','all')
+      $('.cDataEncryption').addClass('active')
 
       if(place.is('#Acropolis')){
         const thirdCard = parent.parent().next().next()
