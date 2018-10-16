@@ -6,7 +6,7 @@ const nutanixLogo = `
   </svg>`
 
 
-const fullpage = `<h3> Manage License </h3> <button class='close'></button>`
+const fullpage = `<h3> Manage License - Puppyfood</h3> <button class='close'></button>`
 
 
 //initial setup

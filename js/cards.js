@@ -203,14 +203,15 @@ function licensePage(){
       button.removeClass('disabled')
       popover.remove()
       parent.find('.cost-box').addClass('cost-blue')
-      $('.cDataEncryption').css('opacity','1')
-      $('.cDataEncryption').css('pointer-events','all')
-
+      // $('.cDataEncryption').css('opacity','1')
+      // $('.cDataEncryption').css('pointer-events','all')
+      $('.cDataEncryption').addClass('active')
       if(place.is('#Acropolis')){
         const thirdCard = parent.parent().next().next()
         parent.find('.c-cost').text(`500 of 500`)
         parent.find('.s-cost').text(`500 of 500`)
         parent.find('h1').append('Pro')
+        parent.find('h3').append('exp. Dec 12 2020')
         thirdCard.find('.c-cost').text(`Acropolis requires 500`)
         thirdCard.find('.s-cost').text(`Acropolis requires 500`)
       }
@@ -218,6 +219,7 @@ function licensePage(){
       if(place.is('#Files')){
         parent.find('.s-cost').html('500 TiB')
         parent.find('h1').append('Pro')
+        parent.find('h3').append('exp. Dec 12 2020')
         parent.parent().next().find('.s-cost').after(`
           <p class='s-cost'>Files requires 500 TiB</p>`)
       }

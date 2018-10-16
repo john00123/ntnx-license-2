@@ -387,6 +387,20 @@ input:disabled, select:disabled {
   line-height: 1.5;
 }
 
+.active {
+  animation: fadeIn 600ms linear 600ms 1 alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .c-cost, .s-cost {
   display: flex;
   align-items: center;
