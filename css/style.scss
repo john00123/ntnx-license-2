@@ -182,19 +182,17 @@ input:disabled, select:disabled{
     }
 }
 
+
+//enabling card animation
 .active{
-  animation: fadeIn 600ms linear 600ms 1 alternate;
+  animation: fadeIn 600ms $animation 600ms 1 alternate;
   animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0.3;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0.3 } to { opacity: 1 }
 }
+
 
 //cost box
 .c-cost, .s-cost{
