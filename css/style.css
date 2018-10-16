@@ -406,11 +406,11 @@ input:disabled, select:disabled {
 
 .c-cost:after, .s-cost:after {
   color: #7C8D9F;
-  margin-left: 6px;
+  margin-left: 10px;
 }
 
 .c-cost::before {
-  background-color: #F25C61;
+  background-color: #34D6CB;
 }
 
 .c-cost::after {

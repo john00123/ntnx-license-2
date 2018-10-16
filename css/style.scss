@@ -173,7 +173,6 @@ input:disabled, select:disabled{
 }
 
 .locked{
-
   @include tooltip('License Level must match Acropolis.', 200px);
   @include tooltip-dark();
   z-index: 200;
@@ -196,12 +195,12 @@ input:disabled, select:disabled{
   }
   &:after{
     color: $font-color-3;
-    margin-left: 6px;
+    margin-left: 10px;
   }
 }
 
 
-.c-cost::before { background-color: #F25C61 }
+.c-cost::before { background-color: #34D6CB }
 .c-cost::after {content: 'Core Licenses';}
 
 .s-cost::before { background-color: #8A77ED }

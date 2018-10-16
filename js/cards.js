@@ -108,8 +108,8 @@ function box(name, storageCost, storageTotal, coreCost, coreTotal){
     case 'Acropolis':
     return(`
       <div class='cost-box cost-gray'>
-        <p class='c-cost'> Requires ${coreTotal}</p>
-        <p class='s-cost'> Requires ${storageTotal}</p>
+        <p class='c-cost'> <progress value="0" max="100"></progress></p>
+        <p class='s-cost'> <progress value="0" max="100"></progress></p>
       </div>`);
     break;
     default:
@@ -199,6 +199,8 @@ function licensePage(){
       const parent = $(this).parent()
       const button = $('.footer-btn')
       const place = parent.find('.footer-btn')
+      const full = `<progress value="100" max="100"></progress>`
+      const empty = `<progress value="0" max="100"></progress>`
 
       button.removeClass('disabled')
       popover.remove()
@@ -208,22 +210,20 @@ function licensePage(){
 
       if(place.is('#Acropolis')){
         const thirdCard = parent.parent().next().next()
-        parent.find('.c-cost').text(`500 of 500`)
-        parent.find('.s-cost').text(`500 of 500`)
-        thirdCard.find('.c-cost').text(`Acropolis requires 500`)
-        thirdCard.find('.s-cost').text(`Acropolis requires 500`)
+        parent.find('.c-cost, .s-cost').html(full)
+        thirdCard.find('.c-cost, .s-cost').html(empty)
+
       }
 
       if(place.is('#Files')){
         parent.find('.s-cost').html('500 TiB')
         parent.parent().next().find('.s-cost').after(`
-          <p class='s-cost'>Files requires 500 TiB</p>`)
+          <p class='s-cost'>${empty}</p>`)
       }
 
       if(place.is('#DataEncryption')){
-        parent.find('.c-cost').text('500 of 500');
-        parent.find('.s-cost:eq(0)').text('500 of 500');
-        parent.find('.s-cost:eq(1)').text('500 TiB');
+        parent.find('.c-cost').html(full);
+        parent.find('.s-cost').html(full);
       }
     });
   });
