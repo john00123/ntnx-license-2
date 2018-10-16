@@ -210,12 +210,14 @@ function licensePage(){
         const thirdCard = parent.parent().next().next()
         parent.find('.c-cost').text(`500 of 500`)
         parent.find('.s-cost').text(`500 of 500`)
+        parent.find('h1').append('Pro')
         thirdCard.find('.c-cost').text(`Acropolis requires 500`)
         thirdCard.find('.s-cost').text(`Acropolis requires 500`)
       }
 
       if(place.is('#Files')){
         parent.find('.s-cost').html('500 TiB')
+        parent.find('h1').append('Pro')
         parent.parent().next().find('.s-cost').after(`
           <p class='s-cost'>Files requires 500 TiB</p>`)
       }
