@@ -19,6 +19,10 @@ h1 {
   font: 200 29px/20px "nutanix_soft", san-serif;
 }
 
+h2 {
+  font: 400 18px/12px "nutanix_soft", san-serif;
+}
+
 h3 {
   font: 500 14px/10px "nutanix_soft", san-serif;
 }
@@ -270,7 +274,7 @@ container {
 
 .description {
   display: block;
-  min-height: 88px;
+  min-height: 50px;
 }
 
 .addon-title {
@@ -296,6 +300,91 @@ container {
 input:disabled, select:disabled {
   background-color: #F2F4F6;
   pointer-events: none;
+}
+
+.locked {
+  position: relative;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  color: #22272E;
+  font: 400 14px/22px "nutanix_soft", san-serif;
+  z-index: 200;
+  font-size: 12px;
+}
+
+.locked:hover {
+  cursor: context-menu;
+}
+
+.locked:hover::before {
+  display: block;
+}
+
+.locked:hover::after {
+  display: block;
+}
+
+.locked::after {
+  content: "License Level must match Acropolis.";
+  top: 25px;
+  width: 200px;
+  display: none;
+  position: absolute;
+  background-color: #FFFFFF;
+  border: 1px solid #D5DAE0;
+  border-radius: 4px;
+  padding: 11px 15px;
+  font: 500 14px/10px "nutanix_soft", san-serif;
+  color: #22272E;
+  text-decoration: none;
+  margin: 0;
+  outline: none;
+  z-index: 2;
+  padding: 15px 20px;
+  box-shadow: 0 9px 9px 0 rgba(0, 0, 0, 0.02), 0 3px 3px 0 rgba(0, 0, 0, 0.02), 0 1px 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+.locked::after:hover {
+  color: #22A5F7;
+  cursor: pointer;
+}
+
+.locked::after:active {
+  color: #91d2fb;
+}
+
+.locked::before {
+  content: '';
+  top: 22.5px;
+  left: 20px;
+  height: 8px;
+  width: 8px;
+  box-sizing: border-box;
+  display: none;
+  box-shadow: -1.2px -1.2px 0 #B8BFCA;
+  position: absolute;
+  background-color: #FFFFFF;
+  border-radius: 1px 0 0 0;
+  z-index: 3;
+  transform: rotate(45deg);
+}
+
+.locked::before {
+  box-shadow: none;
+  height: 10px;
+  width: 10px;
+  box-sizing: border-box;
+  background-color: #22272E;
+}
+
+.locked::after {
+  background-color: #22272E;
+  color: white;
+  border: none;
+}
+
+.locked:after {
+  line-height: 1.5;
 }
 
 .c-cost, .s-cost {
@@ -422,7 +511,7 @@ input:disabled, select:disabled {
   border-radius: 1px;
   transform: rotate(45deg);
   background-color: white;
-  z-index: 1000;
+  z-index: 100;
   box-shadow: -1px 1px 0px 0px rgba(0, 0, 0, 0.05);
 }
 
@@ -548,13 +637,17 @@ select {
 .selectdiv:after {
   content: '';
   position: absolute;
-  top: 36px;
+  top: 42px;
   right: 10px;
   height: 8px;
   width: 4px;
   box-sizing: border-box;
   background: url("../img/select.svg");
   background-size: contain;
+}
+
+.cAcropolis .selectdiv:after {
+  top: 34px;
 }
 
 .input-grid {
@@ -621,4 +714,149 @@ footer {
   width: auto;
   box-sizing: border-box;
   margin-bottom: 40px;
+}
+
+.table-page {
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.furniture-store > h3 {
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.table-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  flex-direction: row;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 9px 9px 0 rgba(0, 0, 0, 0.02), 0 3px 3px 0 rgba(0, 0, 0, 0.02), 0 1px 1px 0 rgba(0, 0, 0, 0.02);
+  margin-top: 20px;
+}
+
+.table-container table {
+  width: 100%;
+}
+
+.table-container th {
+  color: #627386;
+  text-align: left;
+  border-bottom: 1px solid #F2F4F6;
+  padding: 12px 15px;
+}
+
+.table-container th:not(:last-child) {
+  border-right: 1px solid #F2F4F6;
+}
+
+.table-container tr:not(:last-child) {
+  border-bottom: 1px solid #F2F4F6;
+}
+
+.table-container td {
+  padding: 12px 15px;
+}
+
+.overlay {
+  height: 100%;
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: "";
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.popup {
+  height: auto;
+  width: 400px;
+  box-sizing: border-box;
+  box-shadow: 0 9px 9px 0 rgba(0, 0, 0, 0.02), 0 3px 3px 0 rgba(0, 0, 0, 0.02), 0 1px 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  height: auto;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background-color: white;
+  border-radius: 4px 4px 0 0;
+  padding: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid #F2F4F6;
+  line-height: 10px;
+}
+
+.popup-header:hover::after, .popup-header:hover::before {
+  background-color: #22272E;
+}
+
+.popup-header:hover {
+  cursor: pointer;
+}
+
+.popup-header::after, .popup-header::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: "";
+  right: 23px;
+  height: 14px;
+  width: 2px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  display: block;
+  background-color: #7C8D9F;
+}
+
+.popup-header::before {
+  transform: rotate(45deg);
+}
+
+.popup-header::after {
+  transform: rotate(-45deg);
+}
+
+.popup-body {
+  height: auto;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px 20px;
+  background-color: white;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.popup-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  height: 72px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 0 0 4px 4px;
+  border-top: 1px solid #F2F4F6;
+  background-color: white;
+  padding: 20px;
 }

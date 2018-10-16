@@ -2,7 +2,7 @@ let name = [
   {
     name: 'Acropolis',
     status: 'Product License',
-    description: `Nutanix Acropolis combines compute, storage, networking, virtualization, and much needed data protection and security capabilities into a hyperconverged solution that powers your enterprise cloud.`,
+    description: `Acropolis is licensed based on the capacity of the cluster measured in terms of total number of cores and TiB flash storage.`,
     type: 'capacity',
     storageCost: 0,
     coreCost: 0,
@@ -11,8 +11,8 @@ let name = [
   },
   {
     name: 'Files',
-    status: 'Unlicensed',
-    description: `Nutanix Files is a software-defined scale-out file storage solution for unstructured file data.  It provides a highly available and massively scalable data repository for a wide range of  deployments and applications.`,
+    status: 'Product License',
+    description: `Files is licensed based on the storage capacity measured in terms of total TiB storage being used by the files service.`,
     type: 'capacity',
     storageCost: 200,
     coreCost: 200,
@@ -21,8 +21,8 @@ let name = [
   },
   {
     name: 'Data Encryption',
-    status: 'Unlicensed',
-    description: `Nutanix's License Add-on "Data encryption" protects your data with data-at-rest encryption.`,
+    status: 'Product Add-on',
+    description: `Nutanix Data Encryption add-on is licensed based on the same capacity as the product licenses they are being applied on.`,
     type: 'capacity',
     storageCost: 0,
     coreCost: 0,
@@ -30,17 +30,6 @@ let name = [
     coreTotal: 500
   }
 ]
-
-const reviewPage = `
-  <h1> Review and Download </h1>
-  <div class='table-container'
-    <table>
-      <tr>
-        <td>HI</td>
-      <tr>
-    </table>
-  </div>
-`
 
 const firstPage = `
   <div class='image-container'>
@@ -57,9 +46,9 @@ const firstPage = `
 
 const acropolisPopover =`
   <div class='popover'>
-    <h3 class='fw'> Select License Tier </h3>
+    <h3 class='fw'> Select License Level </h3>
     <div class='selectdiv'>
-      <label> License Tier</label>
+      <label> License Level</label>
       <select id='license-tier'>
         <option value='0' disabled selected>Select your option</option>
         <option value='1'> Starter</option>
@@ -77,12 +66,12 @@ const necropolisPopover =`
 
     <h3 class='fw'> Select TiB </h3>
     <div class='selectdiv'>
-      <label> License Tier</label>
+      <label> License Level 🔒 &nbsp;&nbsp;<span class='locked'>Why?</span> </label>
       <select id='license-tier' disabled>
         <option value='0' disabled selected>Select your option</option>
         <option value='1'> Starter (100 available)</option>
-        <option value='2'> Pro (200 available) </option>
-        <option value='3' disabled selected> Ultimate (0 available) </option>
+        <option value='2' selected> Pro (500 available) </option>
+        <option value='3' disabled> Ultimate (0 available) </option>
       </select>
     </div>
       <label >TiB of Licensed storage</label>
@@ -106,7 +95,8 @@ function box(name, storageCost, storageTotal, coreCost, coreTotal){
     case 'Data Encryption':
     return(`
       <div class='cost-box cost-gray'>
-        <p class='s-cost'> Requires ${storageTotal}</p>
+        <p class='c-cost'></p>
+        <p class='s-cost'></p>
       </div>`);
     break;
     case 'Files':
@@ -144,7 +134,7 @@ function cardStructure(
             ? `Select License`
             : (status == 'Licensed')
             ? `Modify Licenses`
-            : `Add more Licenses`}
+            : `Select License`}
           </button></div>
       </div>
   `)
@@ -167,7 +157,9 @@ function licensePage(){
   $('container').html(name.map(name => cardStructure(name.name, name.status, name.description, name.storageCost, name.storageTotal, name.coreCost, name.coreTotal)))
 
   //add-on ⭐️
-  $('.cDataEncryption h1').addClass('addon-title');
+  $('.cDataEncryption h1').addClass('addon-title')
+  $('.cDataEncryption').css('opacity','0.3')
+  $('.cDataEncryption').css('pointer-events','none')
 
   //click on license action button
   $('.footer-btn').click(function(){
@@ -211,21 +203,27 @@ function licensePage(){
       button.removeClass('disabled')
       popover.remove()
       parent.find('.cost-box').addClass('cost-blue')
+      $('.cDataEncryption').css('opacity','1')
+      $('.cDataEncryption').css('pointer-events','all')
 
       if(place.is('#Acropolis')){
-        parent.find('.cost-box').html(`<p>Will be fully licensed on Acrolis Pro</p>`)
-        parent.find('.c-cost, .s-scost').remove()
+        const thirdCard = parent.parent().next().next()
+        parent.find('.c-cost').text(`500 of 500`)
+        parent.find('.s-cost').text(`500 of 500`)
+        thirdCard.find('.c-cost').text(`Acropolis requires 500`)
+        thirdCard.find('.s-cost').text(`Acropolis requires 500`)
       }
 
       if(place.is('#Files')){
         parent.find('.s-cost').html('500 TiB')
         parent.parent().next().find('.s-cost').after(`
-          <p class='c-cost cost-addon'>Requires File Servers</p>`)
+          <p class='s-cost'>Files requires 500 TiB</p>`)
       }
 
       if(place.is('#DataEncryption')){
-        parent.find('.cost-box').html(`<p>Will be fully licensed on Acrolis Pro</p>`)
-        parent.find('.c-cost, .s-scost').remove()
+        parent.find('.c-cost').text('500 of 500');
+        parent.find('.s-cost:eq(0)').text('500 of 500');
+        parent.find('.s-cost:eq(1)').text('500 TiB');
       }
     });
   });
@@ -233,6 +231,7 @@ function licensePage(){
 
 }
 
+//checbox dependency select
 function checks(){
   $(':checkbox').click(function(event){
     if(this.checked){
@@ -263,6 +262,13 @@ function licenseTier(){
 }
 
 
+function tablePage(){
+  $('container').html(reviewPage);
+  $('.furniture-store').append(acropolisTable);
+  $('.furniture-store').append(filesTable);
+  $('.furniture-store').append(dataEncryptionTable);
+}
+
 // change steps
 
 let item = 1;
@@ -276,7 +282,12 @@ let item = 1;
     }
 
     if(item == 3){
-      $('container').html(reviewPage);
+      tablePage()
+      $('.next').text('Download License')
+    }
+
+    if(item == 4){
+      CreatePopup(0,0,0)
     }
 
   });
@@ -322,4 +333,5 @@ $(document).mouseup(function (e) {
 
 
 
-// $('.start').click();
+$('.start').click();
+$('.next').click();
