@@ -211,6 +211,7 @@ function licensePage(){
         const thirdCard = parent.parent().next().next()
         parent.find('.c-cost, .s-cost').html(full)
         parent.find('h1').append('Pro')
+        parent.find('h3').append('exp. Dec 12 2020')
         thirdCard.find('.c-cost, .s-cost').html(empty)
 
       }
@@ -218,6 +219,7 @@ function licensePage(){
       if(place.is('#Files')){
         parent.find('.s-cost').html('500 TiB')
         parent.find('h1').append('Pro')
+        parent.find('h3').append('exp. Dec 12 2020')
         parent.parent().next().find('.s-cost').after(`
           <p class='s-cost'>${empty}</p>`)
       }
