@@ -333,5 +333,5 @@ $(document).mouseup(function (e) {
 
 
 
-$('.start').click();
-$('.next').click();
+// $('.start').click();
+// $('.next').click();
