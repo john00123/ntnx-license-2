@@ -182,6 +182,19 @@ input:disabled, select:disabled{
     }
 }
 
+.active{
+  animation: fadeIn 600ms linear 600ms 1 alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 //cost box
 .c-cost, .s-cost{
