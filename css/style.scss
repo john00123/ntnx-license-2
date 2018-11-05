@@ -82,7 +82,7 @@ header {
 
 aside {
   * { margin-bottom: 10px}
-  @include    size(100%, 280px );
+  @include    size(100%, 240px );
   min-height: calc(100vh - 60px);
   padding: 30px 20px;
   font-weight: 500;
@@ -112,9 +112,9 @@ aside {
 //container
 
 container {
-  @include size(100%, calc(100% - 280px));
+  @include size(100%, calc(100% - 240px));
   @include grid(350px, 1fr, 20px);
-  margin-left: 280px;
+  margin-left: 240px;
   padding: 20px;
 }
 
@@ -357,11 +357,12 @@ select{
 //footer
 
 footer{
-  @include size(60px, 100%);
+  @include size(60px,calc(100% - 240px));
+  margin-left: 240px;
   @include flex(center, space-between, row);
   background: white;
   bottom:0;
-  border-top: 1px solid $background-color-3;
+  border-left: 1px solid $background-color-3;
   padding: 0 20px;
 }
 
