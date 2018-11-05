@@ -213,8 +213,11 @@ input:disabled, select:disabled{
 .c-cost::after {content: 'Core Licenses';}
 
 .s-cost::before { background-color: #8A77ED }
-.s-cost::after {content: 'Flash Licenses';}
+.s-cost::after {content: 'TiB Flash Licenses';}
 
+.cFiles .s-cost::after, .cDataEncryption .s-cost:last-child::after{
+  content: 'TiB Storage Licenses';
+}
 
 .cost-box{
   margin-top: 15px;

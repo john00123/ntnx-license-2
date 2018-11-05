@@ -436,7 +436,11 @@ input:disabled, select:disabled {
 }
 
 .s-cost::after {
-  content: 'Flash Licenses';
+  content: 'TiB Flash Licenses';
+}
+
+.cFiles .s-cost::after, .cDataEncryption .s-cost:last-child::after {
+  content: 'TiB Storage Licenses';
 }
 
 .cost-box {

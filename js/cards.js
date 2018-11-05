@@ -217,17 +217,17 @@ function licensePage(){
       }
 
       if(place.is('#Files')){
-        parent.find('.s-cost').html('500 TiB')
+        parent.find('.s-cost').html('500')
         parent.find('h1').append('Pro')
         parent.find('h3').append('exp. Dec 12 2020')
         parent.parent().next().find('.s-cost').after(`
-          <p class='s-cost'>Files requires 500 TiB</p>`)
+          <p class='s-cost'>Files requires 500</p>`)
       }
 
       if(place.is('#DataEncryption')){
         parent.find('.c-cost').text('500 of 500');
         parent.find('.s-cost:eq(0)').text('500 of 500');
-        parent.find('.s-cost:eq(1)').text('500 TiB');
+        parent.find('.s-cost:eq(1)').text('500');
       }
     });
   });
