@@ -184,8 +184,7 @@ function licensePage(){
     //checks on type of button pressed for acropolis
     if (element.is('#DataEncryption')){
       parent.append(trecropolisPopover)
-      checks();
-
+      // checks();
     }
 
     //element intelligent positioning ((needs heavy refinement))
@@ -204,6 +203,7 @@ function licensePage(){
       popover.remove()
       parent.find('.cost-box').addClass('cost-blue')
       $('.cDataEncryption').addClass('active')
+      $('.cDataEncryption').css('pointer-events','')
 
 
       if(place.is('#Acropolis')){

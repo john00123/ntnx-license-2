@@ -113,7 +113,7 @@ aside {
 
 container {
   @include size(100%, calc(100% - 280px));
-  @include grid(300px, 1fr, 20px);
+  @include grid(350px, 1fr, 20px);
   margin-left: 280px;
   padding: 20px;
 }
@@ -213,7 +213,7 @@ input:disabled, select:disabled{
 .c-cost::after {content: 'Core Licenses';}
 
 .s-cost::before { background-color: #8A77ED }
-.s-cost::after {content: 'Storage Licenses';}
+.s-cost::after {content: 'Flash Licenses';}
 
 
 .cost-box{
