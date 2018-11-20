@@ -151,7 +151,6 @@ function cardStructure(
 $('container').html(firstPage)
 $('footer').toggle()
 uploadFile()
-uploadFile()
 //upload input component
 
 function uploadFile() {
@@ -169,6 +168,7 @@ function uploadPath() {
 function reset(){
   $('container').html(firstPage)
   $('footer').toggle()
+  uploadFile()
 }
 
 //clicks on upload file
@@ -219,7 +219,7 @@ function licensePage(){
       const parent = $(this).parent()
       const button = $('.footer-btn')
       const place = parent.find('.footer-btn')
-
+      $('.next').removeClass('btn-disabled');
       button.removeClass('disabled')
       popover.remove()
       parent.find('.cost-box').addClass('cost-blue')
@@ -304,6 +304,7 @@ let item = 1;
     if(item < 4){item += 1};
     if(item == 2){
       licensePage()
+      $('.next').addClass('btn-disabled');
     }
 
     if(item == 3){
