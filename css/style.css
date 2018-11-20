@@ -267,6 +267,12 @@ container {
   grid-gap: 20px;
 }
 
+.upload-file {
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+}
+
 .card, .cost-box {
   border-radius: 4px;
   position: relative;

@@ -122,6 +122,12 @@ container {
   @include grid(100%, 1fr, 20px);
 }
 
+.upload-file{
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+}
+
 
 //card
 

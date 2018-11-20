@@ -205,7 +205,7 @@ function licensePage(){
     //checks on type of button pressed for acropolis
     if (element.is('#DataEncryption')){
       parent.append(trecropolisPopover)
-      // checks();
+      checks();
     }
 
     //element intelligent positioning ((needs heavy refinement))
