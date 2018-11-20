@@ -209,10 +209,10 @@ input:disabled, select:disabled{
 }
 
 
-.c-cost::before { background-color: #F25C61 }
+.c-cost::before { background-color: rgba(0,0,0,0.2) }
 .c-cost::after {content: 'Core Licenses';}
 
-.s-cost::before { background-color: #8A77ED }
+.s-cost::before { background-color: rgba(0,0,0,0.2)}
 .s-cost::after {content: 'TiB Flash Licenses';}
 
 .cFiles .s-cost::after, .cDataEncryption .s-cost:last-child::after{
@@ -233,6 +233,12 @@ input:disabled, select:disabled{
 .cost-blue{
   color: $dark-blue-1;
   background-color: $light-blue-3;
+  .c-cost::before, .s-cost::before{
+    content: '😋';
+    font-size: 10px;
+    transform: translate(-2px, -8px);
+    background: transparent;
+   }
   .c-cost::after, .s-cost::after{color: $blue-2 }
 }
 

@@ -38,8 +38,15 @@ const firstPage = `
     <p> This is the file you downloaded from Prism Central or Prism Element. This file has information needed to license your cluster on various Nutanix products.</p>
     </br>
     <div>
-      <button class='primary start' style='margin-right:10px'> Upload File</button>
-      <button class='secondary-alt'> Dark Sites </button>
+
+
+
+      <div class='upload-file'>
+        <label class='file-button' for='file'>Select File</label>
+        <input type="file" id='file' style:'display:none'>  <button class='primary start btn-disabled' style='margin-right:10px'> Upload File</button>
+      </div>
+
+
     </div>
   </div>
 `
@@ -143,6 +150,20 @@ function cardStructure(
 //first page
 $('container').html(firstPage)
 $('footer').toggle()
+uploadFile()
+uploadFile()
+//upload input component
+
+function uploadFile() {
+  $("input[type='file']").change(uploadPath);
+}
+
+function uploadPath() {
+  let path = $(this).val().replace("C:\\fakepath\\", '');
+  $('.path').val(path);
+  $('button').removeClass('btn-disabled');
+}
+
 
 //back to first firstPage
 function reset(){
@@ -208,12 +229,12 @@ function licensePage(){
 
       if(place.is('#Acropolis')){
         const thirdCard = parent.parent().next().next()
-        parent.find('.c-cost').text(`500 of 500`)
-        parent.find('.s-cost').text(`500 of 500`)
+        parent.find('.c-cost').text(`500`)
+        parent.find('.s-cost').text(`500`)
         parent.find('h1').append('Pro')
         parent.find('h3').append('exp. Dec 12 2020')
-        thirdCard.find('.c-cost').text(`Acropolis requires 500`)
-        thirdCard.find('.s-cost').text(`Acropolis requires 500`)
+        thirdCard.find('.c-cost').text(`Acropolis 500`)
+        thirdCard.find('.s-cost').text(`Acropolis 500`)
       }
 
       if(place.is('#Files')){
@@ -225,8 +246,8 @@ function licensePage(){
       }
 
       if(place.is('#DataEncryption')){
-        parent.find('.c-cost').text('500 of 500');
-        parent.find('.s-cost:eq(0)').text('500 of 500');
+        parent.find('.c-cost').text('500');
+        parent.find('.s-cost:eq(0)').text('500');
         parent.find('.s-cost:eq(1)').text('500');
       }
     });
