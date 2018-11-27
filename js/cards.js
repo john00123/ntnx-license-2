@@ -190,11 +190,17 @@ function licensePage(){
   $('.unlicense-all').click(function(){
     $(`.pos${item + 1} span`).addClass('active-step');
     $(`.pos${item} span`).removeClass('active-step');
+    item = 3;
     tablePage()
     $('.next').text('Download License');
     $('.unlicense-all').remove();
     $('tr').find('td:eq(4)').text('Removed');
-    item = 3;
+    const button = $('.footer-btn')
+    $('.next').removeClass('btn-disabled');
+    button.removeClass('disabled')
+
+    $('.next').html(`<a href='img/license-file.xml' download> Download License </a>`)
+
   })
 
   //click on license action button
@@ -326,11 +332,16 @@ let item = 1;
       $('.next').text('Next');
     }
 
+    if(item != 3){
+
+    }
+
     if(item == 3){
       tablePage()
-      $('.next').text('Download License');
       $('.unlicense-all').remove();
+        $('.next').html(`<a href='img/license-file.xml' download> Download License </a>`);    // $('.next').attr('download');
     }
+
 
     if(item == 4){
       CreatePopup(0,0,0)
@@ -381,5 +392,5 @@ $(document).mouseup(function (e) {
 
 
 
-// $('.start').click();
-// $('.next').click();
+$('.start').click();
+$('.unlicense-all').click();
