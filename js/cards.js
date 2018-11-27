@@ -309,7 +309,7 @@ let item = 1;
 
     if(item == 3){
       tablePage()
-      $('.next').text('Download License')
+      $('.next').html(`<a href='img/license-file.xml' download> Download License </a>`);
     }
 
     if(item == 4){
