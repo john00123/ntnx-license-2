@@ -391,6 +391,6 @@ $(document).mouseup(function (e) {
 });
 
 
-
-$('.start').click();
-$('.unlicense-all').click();
+//
+// $('.start').click();
+// $('.unlicense-all').click();
