@@ -138,10 +138,10 @@ function cardStructure(
 
           <button id='${names}' class='secondary footer-btn'>
             ${ (status == 'Unlicensed')
-            ? `Select License`
+            ? `Manage License`
             : (status == 'Licensed')
             ? `Modify Licenses`
-            : `Select License`}
+            : `Manage License`}
           </button></div>
       </div>
   `)
