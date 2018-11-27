@@ -16,7 +16,7 @@ const popupData ={
   footer:[
     //0
     `<button class="secondary save" onclick="removePopup()"" style='width:auto'>Close</button>
-    <button class="primary save" onclick="removePopup()" style='width:auto; margin-left:10px'>Download Again</button>
+    <button class="primary save" onclick="removePopup()" style='width:auto; margin-left:10px' download='LSF.xml'>Download Again</button>
     `,
   ]
 }

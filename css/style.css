@@ -167,6 +167,13 @@ h1 {
   color: #7C8D9F;
 }
 
+[flex='c'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
 header, aside, footer {
   position: fixed;
   background-color: white;

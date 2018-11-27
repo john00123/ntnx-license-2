@@ -33,7 +33,9 @@ h1 { line-height: 1.2 }
 .red  { color:$red-1 }
 .blue { color:$dark-blue-3 }
 [data-type='alt']{ color:$font-color-3 }
-
+[flex='c']{
+  @include flex(center, center, row);
+}
 
 header, aside, footer{
   position: fixed;

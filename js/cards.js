@@ -179,8 +179,23 @@ function licensePage(){
 
   //add-on ⭐️
   $('.cDataEncryption h1').addClass('addon-title')
-  $('.cDataEncryption').css('opacity','0.3')
-  $('.cDataEncryption').css('pointer-events','none')
+  // $('.cDataEncryption').css('opacity','0.3')
+  // $('.cDataEncryption').css('pointer-events','none')
+  $('.cost-box').remove();
+  $('.h-buttons').html(`
+    <button class='secondary unlicense-all' style='margin-right:20px'>Unlicense</button><button class='close'></button>
+  `)
+
+  //unlicense
+  $('.unlicense-all').click(function(){
+    $(`.pos${item + 1} span`).addClass('active-step');
+    $(`.pos${item} span`).removeClass('active-step');
+    tablePage()
+    $('.next').text('Download License');
+    $('.unlicense-all').remove();
+    $('tr').find('td:eq(4)').text('Removed');
+    item = 3;
+  })
 
   //click on license action button
   $('.footer-btn').click(function(){
@@ -213,6 +228,11 @@ function licensePage(){
       $('.popover').addClass('popover-right') :
       null
 
+    //add Remove dependency
+
+    $('.cDataEncryption').addClass('active')
+    $('.cDataEncryption').css('pointer-events','')
+
     //on save event
     $('.pop-save').click(()=> {
       const popover = $('.popover')
@@ -223,8 +243,7 @@ function licensePage(){
       button.removeClass('disabled')
       popover.remove()
       parent.find('.cost-box').addClass('cost-blue')
-      $('.cDataEncryption').addClass('active')
-      $('.cDataEncryption').css('pointer-events','')
+
 
 
       if(place.is('#Acropolis')){
@@ -268,7 +287,6 @@ function checks(){
 
 //acropolis first time license tier function
 function licenseTier(){
-
   $('.pop-save').addClass('btn-disabled');
   $('#license-tier').change(function(){
     const value = $(this).val();
@@ -305,11 +323,13 @@ let item = 1;
     if(item == 2){
       licensePage()
       $('.next').addClass('btn-disabled');
+      $('.next').text('Next');
     }
 
     if(item == 3){
       tablePage()
-      $('.next').text('Download License')
+      $('.next').text('Download License');
+      $('.unlicense-all').remove();
     }
 
     if(item == 4){
@@ -328,6 +348,7 @@ let item = 1;
     if(item == 1){
       reset()
       $('.start').off('click');
+      $('.unlicense-all').remove();
       $('.start').on('click', function(){
         $(`.pos${item + 1} span`).addClass('active-step');
         $(`.pos${item} span`).removeClass('active-step');
@@ -338,6 +359,7 @@ let item = 1;
     if(item == 2){
       licensePage();
       $('footer').toggle();
+      $('.next').text('Next');
     }
 
 
