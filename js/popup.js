@@ -8,7 +8,7 @@ const popupData ={
     //0 add instance
     `
         <img src='../img/license.svg' style='height:100px'/><br>
-        <p> Download the license file below and upload it on to Prism Element of the cluster to complete this process. </p>
+        <p>Upload the downloaded license summary file onto Prism Element of this cluster to complete the process. </p>
 
     `
   ],
