@@ -339,7 +339,7 @@ let item = 1;
     if(item == 3){
       tablePage()
       $('.unlicense-all').remove();
-        $('.next').html(`<a href='img/license-file.xml' download> Download License </a>`);    // $('.next').attr('download');
+      $('.next').html(`<a href='img/license-file.xml' download> Download License </a>`);    // $('.next').attr('download');
     }
 
 
