@@ -155,6 +155,15 @@ h1 {
   width: 100%;
 }
 
+.primary a {
+  color: white;
+  font-weight: 500;
+}
+
+.primary a:hover {
+  text-decoration: none;
+}
+
 .red {
   color: #F55656;
 }

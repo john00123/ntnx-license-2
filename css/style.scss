@@ -28,7 +28,13 @@ h1 { line-height: 1.2 }
 // color and size
 
 .fw   { width: 100% }
-
+.primary a{
+  color: white;
+  font-weight: 500;
+  &:hover{
+    text-decoration: none;
+  }
+}
 
 .red  { color:$red-1 }
 .blue { color:$dark-blue-3 }
